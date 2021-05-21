@@ -13,7 +13,6 @@ def test_suit(host="192.168.1.1", body=sg, stream=80, suit=None):
     t_host = [hostname(), host]
     return t_host, body, stream, suit
 
-
 class Main:
     def __init__(self):
         sg.theme("Reddit")
