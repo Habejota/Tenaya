@@ -1,74 +1,107 @@
-import random, time
-import PySimpleGUI as sg
-from os import *
-from socket import gethostname, gethostbyname
+import time  # Importing Time module
+import PySimpleGUI as sg  # Import module to construct gui
+from os import *  # Import all of os Python module
+from socket import gethostname, gethostbyname  # Socket host version
 
-version = "0.0.2"
+# Version of this program
+version = "0.0.013"
 
+# Getting hostname
 def hostname():
     return gethostname()
+# Getting ip configuration
 def ifconfig():
     return gethostbyname(hostname())
+# Realize test suite in program
 def test_suit(host="192.168.1.1", body=sg, stream=80, suit=None):
     t_host = [hostname(), host]
     return t_host, body, stream, suit
 
+# Installer packages module
+class Package:
+    def __init__(self, package="", mirror="https://github.com/TenayaOS/"):  # Manager config
+        self.package = package
+        if package == "":
+            print("Insert package name to download!")
+        else:
+            self.download()
+            self.MoveToLOCAL()
+    def download(self, mirror="https://github.com/TenayaOS/"):
+        mirror_setup = mirror, self.package
+        system(f"git clone {mirror_setup}")
+
+    def MoveToLOCAL(self):
+        system(f"move {self.package} local")
+# Shell
 class Main:
+    # Create window module Layout Widgets
     def __init__(self):
-        sg.theme("Reddit")
+        sg.theme("Reddit")  # Setting theme of window
         layout = [
-            [sg.Text("Script", size=(10,1)), sg.Input(key='script', size=(22,1))],
-            [sg.Button('Execute', size=(30,2))],
-            [sg.Checkbox('Sudo'), sg.Checkbox('Hosted'), sg.Checkbox('Command')],
-            [sg.Text("Output:", size=(10,1))],
-            [sg.Output(size=(32, 6))],
+            [sg.Text("Script", size=(10,1)), sg.Input(key='script', size=(22,1))],  # Script input widget
+            [sg.Button('Execute', size=(30,2))],  # Execute button widget
+            [sg.Checkbox('Sudo'), sg.Checkbox('Hosted'), sg.Checkbox('Command')],  # Checkbox permission widget
+            [sg.Text("Output:", size=(10,1))],  # Text widget
+            [sg.Output(size=(32, 6))],  # Output widget
         ]
-        self.windows =sg.Window("Tardis Executer", layout)
-    def Iniciar(self):
+        self.windows =sg.Window("Tardis Executer", layout)  # Mount window shell
+    def Iniciar(self):  # Reader and executer module
         while True:
             eventos, valores = self.windows.read()
+            # Ram memory iExecuter
             if eventos == sg.WINDOW_CLOSED:
+                del eventos, valores
                 break
+
+            # Execute commands
             elif eventos == 'Execute':
-                cmd = valores['script']
+                cmd = valores['script']  # Get script typed
+                # Close shell window
                 if cmd == "exit":
                     print("Exiting of Tardis Executer. . ."), sleep(4)
                     break
+                # Print a menssage in console
                 elif cmd.startswith("echo"):
                     cmd = cmd.replace("echo ", "")
                     cmd = cmd.replace("echo", "")
                     print(cmd)
+                # Print readed hostname
+                # Print readed host
                 elif cmd == "hostname":
-                    print(f"Hostname of Machine: {hostname()}")
+                    print(f"Hostname of this Machine: {hostname()}")
                     continue
+                # Print readed host configured
                 elif cmd == "ifconfig":
                     print(f"{ifconfig()} ({hostname()})")
                     continue
+                # Set local variable
                 elif cmd.startswith("set"):
                     cmd = cmd.replace("set ", "")
                     cmd = cmd.replace("set", "")
                     shalala = cmd
                     print("Value was uploaded")
+                # Print local variable seted
                 elif cmd == "anchor":
                     try:
                         print(shalala)
                     except:
                         print("Dont have a loaded string")
+                # Delete value loaded
                 elif cmd == "unset":
                     del shalala
                     print('Deleted')
-                elif cmd == "shell":
-                    print("O Shell foi iniciado. . .")
-                    print("Shell basic builder Tardis Shell")
-
-                    system("python shell.py")
+                # Realize test suit
                 elif cmd == "hidden":
                     print(test_suit())
+                    continue
+                # If value is ""
                 elif cmd == "":
                     print()
                     pass
+                # If command is invalid
                 else:
                     print(f"Tardis cannot execute: {cmd}")
 
-janela = Main()
-janela.Iniciar()
+if __name__ == "__main__":
+    janela = Main()
+    janela.Iniciar() # Execute Program gui
