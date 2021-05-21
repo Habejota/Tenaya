@@ -4,7 +4,7 @@ from os import *  # Import all of os Python module
 from socket import gethostname, gethostbyname  # Socket host version
 
 # Version of this program
-version = "0.0.013"
+version = "0.0.013x1"
 
 # Getting hostname
 def hostname():
@@ -60,6 +60,13 @@ class Main:
                 if cmd == "exit":
                     print("Exiting of Tardis Executer. . ."), time.sleep(4)
                     break
+                # Downloaingersion
+                elif cmd == "version":
+                    print(version)
+                    print("This is a pre-realease of this version and being updating continualy, this version s very big and was divided in ")
+                    print("seven part that be disponibilized in everyday of next week!")
+                    print("https://github.com/TenayaOS/Tenaya")
+                    continue
                 # Print a menssage in console
                 elif cmd.startswith("echo"):
                     cmd = cmd.replace("echo ", "")
