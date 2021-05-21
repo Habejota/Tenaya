@@ -8,7 +8,6 @@ set - load Local String to Memory
 anchor - Show loaded string
 unset - sey as undefined
 shell - Shell executer version
-pip shell -  Install Atributes of shell
 login - Open login window
 service - Start the Service interface
 download - Download of datas of server
