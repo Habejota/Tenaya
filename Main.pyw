@@ -58,7 +58,7 @@ class Main:
                 cmd = valores['script']  # Get script typed
                 # Close shell window
                 if cmd == "exit":
-                    print("Exiting of Tardis Executer. . ."), sleep(4)
+                    print("Exiting of Tardis Executer. . ."), time.sleep(4)
                     break
                 # Print a menssage in console
                 elif cmd.startswith("echo"):
