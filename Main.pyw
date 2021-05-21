@@ -65,7 +65,11 @@ class Main:
                     cmd = cmd.replace("echo ", "")
                     cmd = cmd.replace("echo", "")
                     print(cmd)
-                # Print readed hostname
+                # Install pack
+                elif cmd.startswith("install"):
+                    cmd.replace("install ", "")
+                    cmd.replace("install", "")
+                    Package(package=cmd)
                 # Print readed host
                 elif cmd == "hostname":
                     print(f"Hostname of this Machine: {hostname()}")
