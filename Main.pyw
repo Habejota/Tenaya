@@ -64,6 +64,10 @@ class Main:
                 elif cmd.startswith("echo"):
                     cmd = cmd.replace("echo ", "")
                     cmd = cmd.replace("echo", "")
+                    cmd = cmd.replace("%goto%", "\n")
+                    cmd = cmd.replace("%window", '"Tardis Executer')
+                    cmd = cmd.replace("%mirror%", "https://github.com/TenayaOS/Tenaya")
+                    cmd = cmd.replace("%appdata%", "https://github.com/TenayaOS/Tenaya/tree/main/bin")
                     print(cmd)
                 # Install pack
                 elif cmd.startswith("install"):
@@ -74,7 +78,7 @@ class Main:
                 elif cmd == "hostname":
                     print(f"Hostname of this Machine: {hostname()}")
                     continue
-                # Print readed host configured
+                  # Print readed host configured
                 elif cmd == "ifconfig":
                     print(f"{ifconfig()} ({hostname()})")
                     continue
@@ -82,6 +86,10 @@ class Main:
                 elif cmd.startswith("set"):
                     cmd = cmd.replace("set ", "")
                     cmd = cmd.replace("set", "")
+                    cmd = cmd.replace("%goto%", "\n")
+                    cmd = cmd.replace("%window", '"Tardis Executer')
+                    cmd = cmd.replace("%mirror%", "https://github.com/TenayaOS/Tenaya")
+                    cmd = cmd.replace("%appdata%", "https://github.com/TenayaOS/Tenaya/tree/main/bin")
                     shalala = cmd
                     print("Value was uploaded")
                 # Print local variable seted
