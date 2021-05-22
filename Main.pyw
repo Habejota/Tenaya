@@ -4,7 +4,8 @@ from os import *  # Import all of os Python module
 from socket import gethostname, gethostbyname  # Socket host version
 
 # Version of this program
-version = "0.0.013x1"
+version = "0.0.013x2"
+date = "22/05/2021"
 locked = False  #Shell is looked
 
 # Tips of update
