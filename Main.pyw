@@ -5,7 +5,14 @@ from socket import gethostname, gethostbyname  # Socket host version
 
 # Version of this program
 version = "0.0.013x1"
-locked = False
+locked = False  #Shell is looked
+
+# Tips of update
+tips = [
+    "Bug fix", "Debug update", "Debuffers and tolls", "Adding tolls",
+    "Update Readme informations", "New command implemented",
+    "New form package", f"Building version {version}"
+]
 
 # Getting hostname
 def hostname():
