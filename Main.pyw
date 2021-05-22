@@ -124,6 +124,7 @@ class Main:
                         print(f"Tardis cannot execute: {cmd}")
                 elif locked == True:
                     print("The shell been locked\nThe shell cannot be execute because dont have a bash")
+
             except KeyboardInterrupt:
                 if locked == False:
                     print("/bin/shell: Your shell was locked")
