@@ -28,6 +28,10 @@ while True:
         elif cmd == "exit":
             input("Press ENTER to turn off the computer. . .")
             break
+        elif cmd == "":
+            continue
+        else:
+            print("Sorry! Cannot execute this command!")
     except KeyboardInterrupt:
         input("Press ENTER to turn off the computer. . .")
         break
