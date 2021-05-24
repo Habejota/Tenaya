@@ -1,5 +1,6 @@
 from time import sleep as delay
 from os import system as shell
+from os import chdir
 
 bios_name = "VGABios"
 version = "1.0.0"
@@ -27,12 +28,13 @@ def bits(bits, base=36):
 class TardisLoader:
     def __init__(self):
         self.boot_order = ["CD-Rom", "Hard Disk", "Network"]
-        print(f"Plex86/Bochs VGABios (PCI) current-cvs 17 Dec 2008")
+        print(f"\033[32mPlex86/Bochs VGABios (PCI) current-cvs 17 Dec 2008")
         print(f"This VGA/VBE Bios is released under the GNU LGPL\n")
         print("Please visit :")
         print("  * https://bochs.sourceforge.net")
         print("  * https://www.nongnu.org/vgabios")
-        print("\ncirrus-compaatible VGA is detected")
+        print("\ncirrus-compaatible VGA is detected\033[m")
+        print("")
         cd = self.boot_cdRom()
         print()
         if cd == False:
@@ -52,13 +54,13 @@ class TardisLoader:
         except KeyboardInterrupt:
             return False
         else:
-            system("python drive\main.py")
+            shell("python drive\main.py")
             return True
     
     def boot_Hard_Disk(self):
         try:
             print("Booting from Hard Disk. . ."), delay(2)
-            a = open("os\kernel.py").read()
+            a = open("os\kernel.py")
             a.close()
         except FileNotFoundError:
             print("Boot Fail: cannot read this boot driver")
@@ -66,7 +68,8 @@ class TardisLoader:
         except KeyboardInterrupt:
             return False
         else:
-            system("python os\kernel.py")
+            chdir("os")
+            shell("python kernel.py")
             return True
     
     def boot_Network(self):
