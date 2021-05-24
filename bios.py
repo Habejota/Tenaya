@@ -35,13 +35,31 @@ class TardisLoader:
         print("  * https://www.nongnu.org/vgabios")
         print("\ncirrus-compaatible VGA is detected\033[m")
         print("")
-        cd = self.boot_cdRom()
-        print()
-        if cd == False:
-            hdd =  self.boot_Hard_Disk()
-            print()
-            if hdd == False:
-                self.boot_Network()
+        try:
+            cd = self.boot_cdRom()
+            print(), delay(3)
+        except KeyboardInterrupt:
+            if cd == False:
+                try:
+                    hdd =  self.boot_Hard_Disk()
+                    print(), delay(3)
+                except KeyboardInterrupt:
+                    if hdd == False:
+                        self.boot_Network()
+                else:
+                    if hdd == False:
+                        self.boot_Network()                
+        else:
+            if cd == False:
+                try:
+                    hdd =  self.boot_Hard_Disk()
+                    print(), delay(3)
+                except KeyboardInterrupt:
+                    if hdd == False:
+                        self.boot_Network()
+                else:
+                    if hdd == False:
+                        self.boot_Network()   
         
     def boot_cdRom(self):
         try:
@@ -54,6 +72,7 @@ class TardisLoader:
         except KeyboardInterrupt:
             return False
         else:
+            input("Press ENTER to start/read CD-Rom drive. . .")
             shell("python drive\main.py")
             return True
     
