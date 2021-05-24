@@ -9,8 +9,7 @@ def window(body, raise_base, script="/non-shell.sbin"):
     al = (script)
     for i in range(0, int(raise_base)):
         bx = ah
-        ah = ah.read()
-        with open(ah, "r") as dl:
+        with open(bx, "r") as dl:
             dl = dl.read()
             
             if dl == ah:
@@ -19,7 +18,7 @@ def window(body, raise_base, script="/non-shell.sbin"):
             else:
                 mh = i
                 if mh == 10:
-                break
+                    break
     return bx, al, ah, mh            
 def bits(bits, base=36):
     window(body="network.py", raise_base=base)
@@ -35,8 +34,10 @@ class TardisLoader:
         print("  * https://www.nongnu.org/vgabios")
         print("\ncirrus-compaatible VGA is detected")
         cd = self.boot_cdRom()
+        print()
         if cd == False:
             hdd =  self.boot_Hard_Disk()
+            print()
             if hdd == False:
                 self.boot_Network()
         
@@ -69,14 +70,13 @@ class TardisLoader:
             return True
     
     def boot_Network(self):
-        system("python network.py")
-        print("Network system kernel was closed")
-        input("Press ENTER to continue and turn off. . .")
+        shell("python network.py")
         
 
 
 
-def assingture(assing_key)
+def assingture(assing_key):
+    shell("cls")
     if assing_key == "0x500h" or assing_key == "0x6730b":
         TardisLoader()
     return True
