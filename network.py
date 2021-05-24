@@ -2,19 +2,21 @@ from bios import *
 from socket import gethostname, gethostbyname
 import os
 
-print("Booting from Network shell. . .")
+print("Booting from Network. . .")
+print("\n")
+print("Https socket server: Git Manager")
+print("Welcome to Client Line Interface Git Merge!\n")
 
 while True:
     try:
         cmd: str = input("[~] ").strip()
-        if cmd.startswith("pack"):
-            cmd = cmd.replace("pack ", "")
-            cmd = cmd.replace("pack", "")
+        if cmd.startswith("pkg"):
+            cmd = cmd.replace("pkg ", "")
+            cmd = cmd.replace("pkg", "")
             shell(fr"git clone https://github.com/{cmd}.git")
-        elif cmd.startswith("install"):
-            cmd = cmd.replace("install ", "")
-            cmd = cmd.replace("install", "")
-            shell(f"move {cmd}\*.* os")
+        elif cmd == "update":
+            os.chdir("os")
+            os.system("git pull")
         elif cmd == "ls":
             pasta = 'E:\TARDIS'
             for diretorio, subpastas, arquivos in os.walk(pasta):
