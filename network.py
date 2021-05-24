@@ -2,6 +2,8 @@ from bios import *
 from socket import gethostname, gethostbyname
 import os
 
+print("Booting from Network shell. . .")
+
 while True:
     try:
         cmd: str = input("[~] ").strip()
