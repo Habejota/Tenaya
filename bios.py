@@ -64,7 +64,7 @@ class TardisLoader:
     def boot_cdRom(self):
         try:
             print("Booting from CD-Rom. . ."), delay(2)
-            a = open("drive\main.py").read()
+            a = open("drive\main.py")
             a.close()
         except FileNotFoundError:
             print("Boot Fail: cannot read this boot disk")
