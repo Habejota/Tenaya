@@ -18,7 +18,7 @@ while True:
             os.chdir("os")
             os.system("git pull")
         elif cmd == "ls":
-            pasta = 'E:\TARDIS'
+            pasta = os.getcwd()
             for diretorio, subpastas, arquivos in os.walk(pasta):
                 for arquivo in arquivos:
                     print(os.path.join(os.path.realpath(diretorio), arquivo))
