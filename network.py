@@ -12,9 +12,9 @@ while True:
         if cmd.startswith("pkg"):
             cmd = cmd.replace("pkg ", "")
             cmd = cmd.replace("pkg", "")
-            shell(fr"git clone https://github.com/{cmd}.git")
+            os.system(fr"git clone https://github.com/{cmd}.git")
         elif cmd == "clear":
-            shell("cls")
+            os.system("cls")
         elif cmd == "update":
             os.chdir("os")
             os.system("git pull")
@@ -24,7 +24,7 @@ while True:
                 for arquivo in arquivos:
                     print(os.path.join(os.path.realpath(diretorio), arquivo))
         elif cmd == "reboot":
-            shell("python boot.py")
+            os.system("python boot.py")
             break
         elif cmd == "exit":
             input("Press ENTER to turn off the computer. . .")
