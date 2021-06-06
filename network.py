@@ -1,4 +1,3 @@
-from bios import *
 from socket import gethostname, gethostbyname
 import os
 
@@ -14,6 +13,8 @@ while True:
             cmd = cmd.replace("pkg ", "")
             cmd = cmd.replace("pkg", "")
             shell(fr"git clone https://github.com/{cmd}.git")
+        elif cmd == "clear":
+            shell("cls")
         elif cmd == "update":
             os.chdir("os")
             os.system("git pull")
