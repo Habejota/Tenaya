@@ -13,11 +13,14 @@ while True:
             cmd = cmd.replace("pkg ", "")
             cmd = cmd.replace("pkg", "")
             os.system(fr"git clone https://github.com/{cmd}.git")
+        elif cmd == "install --default":
+            os.system(r"git clone https://github.com/Habejota/OSystem.git")
         elif cmd == "clear":
             os.system("cls")
         elif cmd == "update":
             os.chdir("os")
             os.system("git pull")
+            
         elif cmd == "ls":
             pasta = os.getcwd()
             for diretorio, subpastas, arquivos in os.walk(pasta):
