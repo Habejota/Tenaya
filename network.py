@@ -20,7 +20,7 @@ while True:
         elif cmd == "update":
             os.chdir("os")
             os.system("git pull")
-            
+            break
         elif cmd == "ls":
             pasta = os.getcwd()
             for diretorio, subpastas, arquivos in os.walk(pasta):
@@ -30,7 +30,6 @@ while True:
             os.system("python boot.py")
             break
         elif cmd == "exit":
-            input("Press ENTER to turn off the computer. . .")
             break
         elif cmd == "":
             continue
