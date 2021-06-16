@@ -28,38 +28,48 @@ def bits(bits, base=36):
 class TardisLoader:
     def __init__(self):
         self.boot_order = ["CD-Rom", "Hard Disk", "Network"]
-        print(f"\033[32mPlex86/Bochs VGABios (PCI) current-cvs 17 Dec 2008")
-        print(f"This VGA/VBE Bios is released under the GNU LGPL\n")
-        print("Please visit :")
-        print("  * https://bochs.sourceforge.net")
-        print("  * https://www.nongnu.org/vgabios")
-        print("\ncirrus-compaatible VGA is detected\033[m")
-        print("")
         try:
-            cd = self.boot_cdRom()
-            print(), delay(3)
+            print(f"\033[32mPlex86/Bochs VGABios (PCI) current-cvs 17 Dec 2008")
+            print(f"This VGA/VBE Bios is released under the GNU LGPL\n")
+            print("Please visit :")
+            print("  * https://bochs.sourceforge.net")
+            print("  * https://www.nongnu.org/vgabios")
+            print("\ncirrus-compaatible VGA is detected\033[m")
+            print(""), sleep(5.928)
         except KeyboardInterrupt:
-            if cd == False:
-                try:
-                    hdd =  self.boot_Hard_Disk()
-                    print(), delay(3)
-                except KeyboardInterrupt:
-                    if hdd == False:
-                        self.boot_Network()
-                else:
-                    if hdd == False:
-                        self.boot_Network()                
+            boot = str(input("Boot ArcFile:\> "))
+            try:   
+                strputafdpvtnc = open(fr"{boot}.py")
+                strputafdpvtnc.close()
+            except FileNotFoundError:
+                print("Fail to load Bios architure externaly")
+                input("_")
         else:
-            if cd == False:
-                try:
-                    hdd =  self.boot_Hard_Disk()
-                    print(), delay(3)
-                except KeyboardInterrupt:
-                    if hdd == False:
-                        self.boot_Network()
-                else:
-                    if hdd == False:
-                        self.boot_Network()   
+            try:
+                cd = self.boot_cdRom()
+                print(), delay(3)
+            except KeyboardInterrupt:
+                if cd == False:
+                    try:
+                        hdd =  self.boot_Hard_Disk()
+                        print(), delay(3)
+                    except KeyboardInterrupt:
+                        if hdd == False:
+                            self.boot_Network()
+                    else:
+                        if hdd == False:
+                            self.boot_Network()                
+            else:
+                if cd == False:
+                    try:
+                        hdd =  self.boot_Hard_Disk()
+                        print(), delay(3)
+                    except KeyboardInterrupt:
+                        if hdd == False:
+                            self.boot_Network()
+                    else:
+                        if hdd == False:
+                            self.boot_Network()   
         
     def boot_cdRom(self):
         try:
