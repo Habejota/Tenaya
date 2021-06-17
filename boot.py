@@ -35,15 +35,9 @@ class TardisLoader:
             print("  * https://bochs.sourceforge.net")
             print("  * https://www.nongnu.org/vgabios")
             print("\ncirrus-compaatible VGA is detected\033[m")
-            print(""), sleep(5.928)
+            print(""), delay(3)
         except KeyboardInterrupt:
-            boot = str(input("Boot ArcFile:\> "))
-            try:   
-                strputafdpvtnc = open(fr"{boot}.py")
-                strputafdpvtnc.close()
-            except FileNotFoundError:
-                print("Fail to load Bios architure externaly")
-                input("_")
+            shell("bios.py")
         else:
             try:
                 cd = self.boot_cdRom()
