@@ -35,9 +35,15 @@ class TardisLoader:
             print("  * https://bochs.sourceforge.net")
             print("  * https://www.nongnu.org/vgabios")
             print("\ncirrus-compaatible VGA is detected\033[m")
-            print(""), delay(3)
+            print(""), sleep(5.928)
         except KeyboardInterrupt:
-            shell("bios.py")
+            boot = str(input("Boot ArcFile:\> "))
+            try:   
+                strputafdpvtnc = open(fr"{boot}.py")
+                strputafdpvtnc.close()
+            except FileNotFoundError:
+                print("Fail to load Bios architure externaly")
+                input("_")
         else:
             try:
                 cd = self.boot_cdRom()
@@ -107,17 +113,6 @@ def assingture(assing_key):
         TardisLoader()
     return True
 
-try:
-    program_name = sys.argv[0]
-    rotulo = sys.argv[1]
-except:
-    bits(32)
-    assingture("0x500h")
-else:
-    try:
-        r = open(rotulo, "r")
-    except:
-        print("Sorry! This System Package dont Existst!")
-    else:
-        shell(fr"{env}\Package\lua.exe {rotulo}")
-        shell("pause")
+
+bits(32)
+assingture("0x500h")
