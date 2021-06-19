@@ -1,10 +1,10 @@
 from time import sleep as delay
 from os import system as shell
-from os import chdir
+from os import chdir, getcwd
+import sys
 
 bios_name = "VGABios"
 version = "1.0.2"
-
 def window(body, raise_base, script="/non-shell.sbin"):
     ah = str(body)
     al = (script)
@@ -98,7 +98,7 @@ class TardisLoader:
     def boot_Network(self):
         shell("python network.py")
         
-
+env = getcwd()
 
 
 def assingture(assing_key):
@@ -107,6 +107,17 @@ def assingture(assing_key):
         TardisLoader()
     return True
 
-
-bits(32)
-assingture("0x500h")
+try:
+    program_name = sys.argv[0]
+    rotulo = sys.argv[1]
+except:
+    bits(32)
+    assingture("0x500h")
+else:
+    try:
+        r = open(rotulo, "r")
+    except:
+        print("Sorry! This System Package dont Existst!")
+    else:
+        shell(fr"{env}\Package\lua.exe {rotulo}")
+        shell("pause")
