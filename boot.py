@@ -35,7 +35,7 @@ class TardisLoader:
             print("  * https://bochs.sourceforge.net")
             print("  * https://www.nongnu.org/vgabios")
             print("\ncirrus-compaatible VGA is detected\033[m")
-            print(""), sleep(5.928)
+            print(""), delay(5.928)
         except KeyboardInterrupt:
             boot = str(input("Boot ArcFile:\> "))
             try:   
