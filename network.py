@@ -25,7 +25,7 @@ while True:
             os.chdir("os")
             os.system("git pull")
             os.chdir("..")
-            os.system("boot.exe")
+            os.system("Executer.exe")
             break
         elif cmd == "ls":
             pasta = os.getcwd()
@@ -33,7 +33,7 @@ while True:
                 for arquivo in arquivos:
                     print(os.path.join(os.path.realpath(diretorio), arquivo))
         elif cmd == "reboot":
-            os.system("boot.exe")
+            os.system("Executer.exe")
             break
         elif cmd == "exit":
             break
